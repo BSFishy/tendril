@@ -1,0 +1,20 @@
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+metrics:
+  enabled: true
+  port: 8080
+
+managed:
+  enabled: true
+  existingSecret: cloudflared-secret
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1

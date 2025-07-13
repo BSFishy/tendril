@@ -15,8 +15,9 @@
         devShells = {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.helmfile
               pkgs.just
+              pkgs.kubernetes-helm
+              pkgs.helmfile
 
               # for development
               pkgs.k9s

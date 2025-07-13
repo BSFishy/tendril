@@ -1,0 +1,20 @@
+repositories:
+  - name: kubitodev
+    url: https://charts.kubito.dev
+
+releases:
+  - name: secrets
+    namespace: default
+    chart: ./charts/secrets/
+    values:
+      - values.secrets.yaml
+      - values.yaml
+
+  - name: cloudflared
+    namespace: cloudflared
+    chart: kubitodev/cloudflared
+    version: 1.7.0
+    labels:
+      key: test
+    values:
+      - values/cloudflared.values.yaml
