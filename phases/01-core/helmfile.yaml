@@ -9,20 +9,6 @@ repositories:
     url: https://k8s-gateway.github.io/k8s_gateway/
 
 releases:
-  - name: cloudflared-secrets
-    namespace: cloudflared
-    chart: ./charts/cloudflared-secrets/
-    values:
-      - values.secrets.yaml
-      - values.yaml
-
-  - name: cloudflared
-    namespace: cloudflared
-    chart: kubitodev/cloudflared
-    version: 1.7.0
-    values:
-      - values/cloudflared.values.yaml
-
   - name: traefik
     namespace: traefik
     chart: traefik/traefik
@@ -45,6 +31,22 @@ releases:
       - k8s-gateway/k8s-gateway
     values:
       - values/coredns.values.yaml
+
+  - name: cloudflared-secrets
+    namespace: cloudflared
+    chart: ./charts/cloudflared-secrets/
+    values:
+      - values.secrets.yaml
+      - values.yaml
+
+  - name: cloudflared
+    namespace: cloudflared
+    chart: kubitodev/cloudflared
+    version: 1.7.0
+    needs:
+      - kube-system/coredns
+    values:
+      - values/cloudflared.values.yaml
 
   - name: glance
     namespace: glance

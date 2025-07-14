@@ -7,6 +7,9 @@ prometheus:
     # TODO: enable this when i add prometheus
     enabled: false
 
+service:
+  clusterIP: 10.43.0.10
+
 servers:
   - zones:
       - zone: .
@@ -25,7 +28,7 @@ servers:
           fallthrough in-addr.arpa ip6.arpa
           ttl 30
       - name: forward
-        parameters: home.mattprovost.dev 10.43.1.1
+        parameters: home.mattprovost.dev 10.43.0.11
       - name: prometheus
         parameters: 0.0.0.0:9153
       - name: forward
