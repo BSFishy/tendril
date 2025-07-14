@@ -13,7 +13,6 @@ podDisruptionBudget:
 ingressClass:
   enabled: true
   isDefaultClass: true
-  name: "tendril-traefik"
 
 # TODO: don't expose this publicly in prod
 ingressRoute:

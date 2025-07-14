@@ -5,9 +5,9 @@ repositories:
     url: https://traefik.github.io/charts
 
 releases:
-  - name: secrets
-    namespace: default
-    chart: ./charts/secrets/
+  - name: cloudflared-secrets
+    namespace: cloudflared
+    chart: ./charts/cloudflared-secrets/
     values:
       - values.secrets.yaml
       - values.yaml
