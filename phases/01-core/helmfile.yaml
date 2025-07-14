@@ -1,6 +1,8 @@
 repositories:
   - name: kubitodev
     url: https://charts.kubito.dev
+  - name: traefik
+    url: https://traefik.github.io/charts
 
 releases:
   - name: secrets
@@ -14,7 +16,12 @@ releases:
     namespace: cloudflared
     chart: kubitodev/cloudflared
     version: 1.7.0
-    labels:
-      key: test
     values:
       - values/cloudflared.values.yaml
+
+  - name: traefik
+    namespace: traefik
+    chart: traefik/traefik
+    version: 36.3.0
+    values:
+      - values/traefik.values.yaml
