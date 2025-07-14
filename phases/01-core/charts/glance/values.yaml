@@ -1,0 +1,17 @@
+image:
+  repository: glanceapp/glance
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 8080
+servicePort: 80
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - paths:
+        - path: /
+          pathType: Prefix
+  tls: []

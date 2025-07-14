@@ -25,3 +25,9 @@ releases:
     version: 36.3.0
     values:
       - values/traefik.values.yaml
+
+  - name: glance
+    namespace: glance
+    chart: ./charts/glance/
+    values:
+      - values.yaml

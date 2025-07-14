@@ -18,5 +18,6 @@ ingressClass:
 ingressRoute:
   dashboard:
     enabled: true
+    entryPoints: ["web", "websecure", "traefik"]
   healthcheck:
     enabled: true
