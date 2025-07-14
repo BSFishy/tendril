@@ -1,0 +1,9 @@
+# TODO: make this use the global hostname?
+domain: home.mattprovost.dev
+
+# since this is split horizon, the ttls should be very short so roaming is quick
+ttl: 5
+
+service:
+  type: ClusterIP
+  clusterIP: 10.43.1.1

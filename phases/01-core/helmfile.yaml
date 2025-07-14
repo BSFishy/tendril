@@ -3,6 +3,10 @@ repositories:
     url: https://charts.kubito.dev
   - name: traefik
     url: https://traefik.github.io/charts
+  - name: coredns
+    url: https://coredns.github.io/helm
+  - name: k8s_gateway
+    url: https://k8s-gateway.github.io/k8s_gateway/
 
 releases:
   - name: cloudflared-secrets
@@ -26,8 +30,28 @@ releases:
     values:
       - values/traefik.values.yaml
 
+  - name: k8s-gateway
+    namespace: k8s-gateway
+    chart: k8s_gateway/k8s-gateway
+    version: 3.2.1
+    values:
+      - values/k8s_gateway.values.yaml
+
+  - name: coredns
+    namespace: kube-system
+    chart: coredns/coredns
+    version: 1.43.0
+    needs:
+      - k8s-gateway/k8s-gateway
+    values:
+      - values/coredns.values.yaml
+
   - name: glance
     namespace: glance
     chart: ./charts/glance/
+    needs:
+      - cloudflared/cloudflared
+      - traefik/traefik
+      - kube-system/coredns
     values:
       - values.yaml
