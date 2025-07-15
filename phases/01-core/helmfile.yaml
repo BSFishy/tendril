@@ -15,6 +15,7 @@ releases:
     namespace: traefik
     chart: traefik/traefik
     version: 36.3.0
+    disableValidation: true
     values:
       - values/traefik.values.yaml
 
@@ -44,6 +45,10 @@ releases:
   - name: cert-issuer
     namespace: cert-manager
     chart: ./charts/cert-issuer/
+    disableValidation: true
+    needs:
+      - cert-manager/cert-manager
+      - traefik/traefik
     values:
       - values.secrets.yaml
       - values.yaml
