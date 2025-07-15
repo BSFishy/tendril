@@ -1,6 +1,6 @@
 image:
   repository: glanceapp/glance
-  tag: latest
+  tag: v0.8.4
   pullPolicy: IfNotPresent
 
 containerPort: 8080
