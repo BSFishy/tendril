@@ -14,10 +14,23 @@ ingressClass:
   enabled: true
   isDefaultClass: true
 
-# TODO: don't expose this publicly in prod
+ports:
+  web:
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: true
+
 ingressRoute:
   dashboard:
     enabled: true
-    entryPoints: ["web", "websecure", "traefik"]
+    matchRule: Host(`traefik.home.mattprovost.dev`)
+    entryPoints: ["websecure", "traefik"]
   healthcheck:
     enabled: true
+
+# register the dns record in coredns
+service:
+  annotations:
+    "coredns.io/hostname": "traefik.home.mattprovost.dev"

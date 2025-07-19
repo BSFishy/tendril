@@ -1,5 +1,6 @@
 authentik:
   secret_key: file:///authentik-creds/secret-key
+  disable_update_check: true
   postgresql:
     host: postgres-postgresql.postgres.svc.cluster.local
     user: postgres
