@@ -9,8 +9,24 @@ repositories:
     url: https://k8s-gateway.github.io/k8s_gateway/
   - name: jetstack
     url: https://charts.jetstack.io
+  - name: authentik
+    url: https://charts.goauthentik.io
 
 releases:
+  - name: postgres
+    namespace: postgres
+    chart: oci://registry-1.docker.io/bitnamicharts/postgresql
+    version: 16.7.20
+    values:
+      - values/postgres.values.yaml
+
+  - name: redis
+    namespace: redis
+    chart: oci://registry-1.docker.io/bitnamicharts/redis
+    version: 21.2.12
+    values:
+      - values/redis.values.yaml
+
   - name: traefik
     namespace: traefik
     chart: traefik/traefik
@@ -52,6 +68,16 @@ releases:
     values:
       - values.secrets.yaml
       - values.yaml
+
+  - name: authentik
+    namespace: authentik
+    chart: authentik/authentik
+    version: 2025.6.3
+    needs:
+      - postgres/postgres
+      - redis/redis
+    values:
+      - values/authentik.values.yaml
 
   - name: cloudflared-secrets
     namespace: cloudflared

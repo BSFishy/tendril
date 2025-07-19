@@ -1,0 +1,33 @@
+authentik:
+  secret_key: file:///authentik-creds/secret-key
+  postgresql:
+    host: postgres-postgresql.postgres.svc.cluster.local
+    user: postgres
+    password: file:///authentik-creds/postgres-password
+  redis:
+    host: redis-master.redis.svc.cluster.local
+    password: file:///authentik-creds/redis-password
+
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - auth.home.mattprovost.dev
+  volumes:
+    - name: authentik-creds
+      secret:
+        secretName: authentik-creds
+  volumeMounts:
+    - name: authentik-creds
+      mountPath: /authentik-creds
+      readOnly: true
+
+worker:
+  volumes:
+    - name: authentik-creds
+      secret:
+        secretName: authentik-creds
+  volumeMounts:
+    - name: authentik-creds
+      mountPath: /authentik-creds
+      readOnly: true

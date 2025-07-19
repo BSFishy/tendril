@@ -1,0 +1,8 @@
+auth:
+  existingSecret: postgres-creds
+
+primary:
+  initdb:
+    scripts:
+      authentik.sql: |
+        CREATE DATABASE authentik;

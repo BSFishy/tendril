@@ -16,6 +16,7 @@
           default = pkgs.mkShell {
             buildInputs = [
               pkgs.just
+              pkgs.openssl
               pkgs.kubectl
               pkgs.kubernetes-helm
               pkgs.helmfile
