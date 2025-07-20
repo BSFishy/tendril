@@ -22,7 +22,7 @@ fi
 # 1. Generate a secure password (32 bytes, Base64 URL-safe)
 POSTGRES_ADMIN_PASSWORD=$(kubectl get -n postgres secret postgres-creds -o jsonpath='{.data.postgres-password}' | base64 --decode)
 REDIS_PASSWORD=$(kubectl get -n redis secret redis-creds -o jsonpath='{.data.password}' | base64 --decode)
-AUTHENTIK_SECRET_KEY="$(openssl rand -base64 32 | tr -d '\n')"
+AUTHENTIK_SECRET_KEY="$(openssl rand -base64 50 | tr -d '\n')"
 
 # 2. Create or update the K8s secret
 kubectl -n "$NS" delete secret "$SECRET_NAME" --ignore-not-found
