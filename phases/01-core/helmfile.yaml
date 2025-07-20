@@ -43,7 +43,7 @@ releases:
       - values/k8s_gateway.values.yaml
 
   - name: coredns
-    namespace: kube-system
+    namespace: coredns
     chart: coredns/coredns
     version: 1.43.0
     needs:
@@ -83,7 +83,7 @@ releases:
     chart: kubitodev/cloudflared
     version: 1.7.0
     needs:
-      - kube-system/coredns
+      - coredns/coredns
     values:
       - values/cloudflared.values.yaml
 
@@ -93,6 +93,6 @@ releases:
     needs:
       - cloudflared/cloudflared
       - traefik/traefik
-      - kube-system/coredns
+      - coredns/coredns
     values:
       - values.yaml

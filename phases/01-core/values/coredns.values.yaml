@@ -8,7 +8,9 @@ prometheus:
     enabled: false
 
 service:
-  clusterIP: 10.43.0.10
+  loadBalancerIP: 192.168.1.100
+
+isClusterService: false
 
 servers:
   - zones:
@@ -21,16 +23,10 @@ servers:
         configBlock: |-
           lameduck 10s
       - name: ready
-      - name: kubernetes
-        parameters: cluster.local in-addr.arpa ip6.arpa
-        configBlock: |-
-          pods insecure
-          fallthrough in-addr.arpa ip6.arpa
-          ttl 30
-      - name: forward
-        parameters: home.mattprovost.dev 10.43.0.11
       - name: prometheus
         parameters: 0.0.0.0:9153
+      - name: forward
+        parameters: home.mattprovost.dev 192.168.1.101
       - name: forward
         parameters: . 1.1.1.1 1.0.0.1
       - name: cache
