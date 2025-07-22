@@ -8,7 +8,7 @@ prometheus:
     enabled: false
 
 service:
-  loadBalancerIP: 192.168.1.100
+  loadBalancerIP: 10.0.1.251
   ipFamilyPolicy: PreferDualStack
 
 isClusterService: false
@@ -27,7 +27,7 @@ servers:
       - name: prometheus
         parameters: 0.0.0.0:9153
       - name: forward
-        parameters: home.mattprovost.dev 192.168.1.101
+        parameters: home.mattprovost.dev 10.0.1.252
       - name: forward
         parameters: . 1.1.1.1 1.0.0.1
       - name: cache
