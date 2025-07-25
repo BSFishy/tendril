@@ -9,7 +9,8 @@ servicePort: 80
 ingress:
   enabled: true
   className: ""
-  annotations: {}
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik@kubernetescrd
   hosts:
     - paths:
         - path: /

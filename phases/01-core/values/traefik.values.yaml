@@ -27,8 +27,14 @@ ingressRoute:
     enabled: true
     matchRule: Host(`traefik.home.mattprovost.dev`)
     entryPoints: ["websecure", "traefik"]
+    middlewares:
+      - name: authentik-authentik@kubernetescrd
   healthcheck:
     enabled: true
+
+providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
 
 # register the dns record in coredns
 service:
