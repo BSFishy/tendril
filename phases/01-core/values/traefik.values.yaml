@@ -21,6 +21,11 @@ ports:
         to: websecure
         scheme: https
         permanent: true
+  websecure:
+    forwardedHeaders:
+      trustedIPs:
+        - 0.0.0.0/0
+      insecure: true
 
 ingressRoute:
   dashboard:
@@ -42,3 +47,6 @@ service:
   annotations:
     "metallb.io/loadBalancerIPs": "10.0.1.250,2603:8080:1e00:1b00::2"
     "coredns.io/hostname": "traefik.home.mattprovost.dev"
+  spec:
+    # fix external traffic ip
+    externalTrafficPolicy: Local
