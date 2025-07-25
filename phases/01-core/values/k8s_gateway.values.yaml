@@ -7,4 +7,3 @@ ttl: 5
 service:
   type: LoadBalancer
   loadBalancerIP: 10.0.1.252
-  ipFamilyPolicy: PreferDualStack

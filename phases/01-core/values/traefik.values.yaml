@@ -32,6 +32,6 @@ ingressRoute:
 
 # register the dns record in coredns
 service:
-  ipFamilyPolicy: PreferDualStack
+  ipFamilyPolicy: RequireDualStack
   annotations:
     "coredns.io/hostname": "traefik.home.mattprovost.dev"

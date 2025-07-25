@@ -9,7 +9,6 @@ prometheus:
 
 service:
   loadBalancerIP: 10.0.1.251
-  ipFamilyPolicy: PreferDualStack
 
 isClusterService: false
 
