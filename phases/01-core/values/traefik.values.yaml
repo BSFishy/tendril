@@ -40,4 +40,5 @@ providers:
 service:
   ipFamilyPolicy: RequireDualStack
   annotations:
+    "metallb.io/loadBalancerIPs": "10.0.1.250,2603:8080:1e00:1b00::2"
     "coredns.io/hostname": "traefik.home.mattprovost.dev"
