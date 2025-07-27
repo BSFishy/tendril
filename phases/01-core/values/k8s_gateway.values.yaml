@@ -1,5 +1,5 @@
 # TODO: make this use the global hostname?
-domain: home.mattprovost.dev
+domain: mattprovost.dev
 
 # since this is split horizon, the ttls should be very short so roaming is quick
 ttl: 5
@@ -7,3 +7,6 @@ ttl: 5
 service:
   type: LoadBalancer
   loadBalancerIP: 10.0.1.252
+
+debug:
+  enabled: true

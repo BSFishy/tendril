@@ -28,6 +28,8 @@ servers:
       - name: forward
         parameters: home.mattprovost.dev 10.0.1.252
       - name: forward
+        parameters: k8s.mattprovost.dev 10.0.1.252
+      - name: forward
         parameters: . 1.1.1.1 1.0.0.1
       - name: cache
         parameters: 30
