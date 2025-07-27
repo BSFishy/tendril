@@ -1,0 +1,36 @@
+statefulset:
+  storage:
+    enabled: true
+    storageClassName: ""
+  nodeSelector:
+    zigbee: enabled
+
+  # TODO: do i want to make this a symbolic link to a well-known path?
+  volumeMounts:
+    - name: zigbee-usb
+      mountPath: "/dev/ttyUSB0"
+  volumes:
+    - name: zigbee-usb
+      hostPath:
+        path: "/dev/ttyUSB0"
+        type: CharDevice
+
+zigbee2mqtt:
+  timezone: CST
+  mqtt:
+    server: "mqtt://mosquitto.mosquitto.svc.cluster.local:1883"
+  serial:
+    port: "/dev/ttyUSB0"
+    adapter: zstack
+
+ingress:
+  enabled: true
+  ingressClassName: ""
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik@kubernetescrd
+  hosts:
+    - host: zigbee.home.mattprovost.dev
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: {}

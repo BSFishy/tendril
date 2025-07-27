@@ -13,6 +13,10 @@ repositories:
     url: https://charts.goauthentik.io
   - name: pajikos
     url: https://pajikos.github.io/home-assistant-helm-chart/
+  - name: t3n
+    url: https://storage.googleapis.com/t3n-helm-charts
+  - name: zigbee2mqtt
+    url: https://charts.zigbee2mqtt.io
 
 releases:
   - name: postgres
@@ -98,6 +102,22 @@ releases:
       - coredns/coredns
     values:
       - values.yaml
+
+  - name: mosquitto
+    namespace: mosquitto
+    chart: t3n/mosquitto
+    version: 2.4.1
+    values:
+      - values/mosquitto.values.yaml
+
+  - name: zigbee2mqtt
+    namespace: zigbee2mqtt
+    chart: zigbee2mqtt/zigbee2mqtt
+    version: 2.5.1
+    needs:
+      - mosquitto/mosquitto
+    values:
+      - values/zigbee2mqtt.values.yaml
 
   - name: home-assistant
     namespace: home-assistant
