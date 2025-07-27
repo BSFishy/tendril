@@ -11,6 +11,8 @@ repositories:
     url: https://charts.jetstack.io
   - name: authentik
     url: https://charts.goauthentik.io
+  - name: pajikos
+    url: https://pajikos.github.io/home-assistant-helm-chart/
 
 releases:
   - name: postgres
@@ -96,3 +98,12 @@ releases:
       - coredns/coredns
     values:
       - values.yaml
+
+  - name: home-assistant
+    namespace: home-assistant
+    chart: pajikos/home-assistant
+    version: 0.3.12
+    needs:
+      - traefik/traefik
+    values:
+      - values/home-assistant.values.yaml

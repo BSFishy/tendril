@@ -1,0 +1,24 @@
+podAnnotations:
+  "k8s.v1.cni.cncf.io/networks": default/multus-macvlan
+
+service:
+  type: LoadBalancer
+
+ingress:
+  enabled: true
+  hosts:
+    - host: ha.home.mattprovost.dev
+      paths:
+        - path: /
+          pathType: Prefix
+
+configuration:
+  enabled: true
+  forceInit: true
+  trusted_proxies:
+    - 10.42.0.0/16
+
+persistence:
+  enabled: true
+
+deploymentStrategy: Recreate
