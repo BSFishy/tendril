@@ -16,12 +16,16 @@ statefulset:
         type: CharDevice
 
 zigbee2mqtt:
-  timezone: CST
+  timezone: America/Chicago
   mqtt:
     server: "mqtt://mosquitto.mosquitto.svc.cluster.local:1883"
   serial:
     port: "/dev/ttyUSB0"
     adapter: zstack
+  availability:
+    enabled: true
+  advanced:
+    last_seen: "ISO_8601_local"
 
 ingress:
   enabled: true
