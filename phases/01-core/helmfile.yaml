@@ -85,15 +85,6 @@ releases:
     values:
       - values/authentik.values.yaml
 
-  - name: cloudflared
-    namespace: cloudflared
-    chart: kubitodev/cloudflared
-    version: 1.7.0
-    needs:
-      - coredns/coredns
-    values:
-      - values/cloudflared.values.yaml
-
   - name: glance
     namespace: glance
     chart: ./charts/glance/
