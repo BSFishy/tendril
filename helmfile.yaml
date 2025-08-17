@@ -1,6 +1,4 @@
 repositories:
-  - name: kubitodev
-    url: https://charts.kubito.dev
   - name: traefik
     url: https://traefik.github.io/charts
   - name: coredns
@@ -89,7 +87,6 @@ releases:
     namespace: glance
     chart: ./charts/glance/
     needs:
-      - cloudflared/cloudflared
       - traefik/traefik
       - coredns/coredns
     values:
