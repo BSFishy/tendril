@@ -116,3 +116,7 @@ releases:
       - traefik/traefik
     values:
       - values/home-assistant.values.yaml
+
+  - name: lumos
+    namespace: lumos
+    chart: ./charts/lumos/
